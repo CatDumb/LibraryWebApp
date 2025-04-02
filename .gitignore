@@ -1,0 +1,15 @@
+# Ignore Python virtual environment
+librarywebappvenv/
+
+# Ignore other common files and directories
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.sqlite3
+.DS_Store
+.env
+.idea/
+.vscode/
+node_modules/
