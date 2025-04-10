@@ -1,5 +1,6 @@
 import os
 from fastapi import FastAPI, Depends
+from fastapi.staticfiles import StaticFiles
 from app.core.db_config import get_db
 from sqlalchemy.sql import text
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -12,19 +13,8 @@ app = FastAPI(
     redoc_url="/redoc"
 )
 
+app.mount("/", StaticFiles(directory="frontend/public", html=True), name="static")
+
 @app.get("/")
 async def read_root():
     return {"message": "Welcome to the Library Management System API"}
-
-@app.get("/health")
-async def health_check(db: AsyncSession = Depends(get_db)):
-    try:
-        # Test database connection
-        await db.execute(text("SELECT 1"))
-        return {
-            "status": "healthy",
-            "database": "connected",
-            "environment": os.getenv("ENV", "development")
-        }
-    except Exception as e:
-        return {"status": "unhealthy", "error": str(e)}

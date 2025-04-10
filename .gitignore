@@ -12,4 +12,21 @@ __pycache__/
 .env
 .idea/
 .vscode/
+
+# Ignore Node.js dependencies
 node_modules/
+
+# Ignore frontend build and testing files
+/frontend/build
+/frontend/coverage
+
+# Ignore frontend environment files
+/frontend/.env.local
+/frontend/.env.development.local
+/frontend/.env.test.local
+/frontend/.env.production.local
+
+# Ignore miscellaneous frontend files
+/frontend/npm-debug.log*
+/frontend/yarn-debug.log*
+/frontend/yarn-error.log*
